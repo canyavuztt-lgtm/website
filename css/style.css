@@ -1915,56 +1915,14 @@ a:focus {
     padding: 45px 0;
 }
 
-.portfolio #portfolio-flters {
-    padding: 0;
-    margin: -15px 0 25px 0;
-    list-style: none;
-    font-size: 0;
-    text-align: center;
-}
-
-.portfolio #portfolio-flters li,
-.portfolio .load-more .btn {
-    cursor: pointer;
-    display: inline-block;
-    margin: 5px;
-    padding: 8px 15px;
-    color: #030f27;
-    font-size: 14px;
-    font-weight: 500;
-    text-transform: uppercase;
-    border-radius: 0;
-    background: #fdbe33;
-    border: none;
-    transition: .3s;
-}
-
-.portfolio #portfolio-flters li:hover,
-.portfolio #portfolio-flters li.filter-active {
-    background: #030f27;
-    color: #fdbe33;
-}
-
-.portfolio .load-more {
-    text-align: center;
-}
-
-.portfolio .load-more .btn {
-    padding: 15px 35px;
-    font-size: 16px;
-    transition: .3s;
-}
-
-.portfolio .load-more .btn:hover {
-    color: #fdbe33;
-    background: #030f27;
+.portfolio .portfolio-item {
+    margin-bottom: 30px;
+    overflow: hidden;
 }
 
 .portfolio .portfolio-warp {
     position: relative;
     width: 100%;
-    text-align: center;
-    margin-bottom: 30px;
 }
 
 .portfolio .portfolio-img {
@@ -1974,79 +1932,61 @@ a:focus {
 
 .portfolio .portfolio-img img {
     width: 100%;
+    height: 260px;
+    object-fit: cover;
     transition: .3s;
-}
-
-.portfolio .portfolio-item:hover img {
-    transform: scale(1.1);
-}
-
-.portfolio .portfolio-overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    padding: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(3, 15, 39, .7);
-    transition: .5s;
-    opacity: 0;
-}
-
-.portfolio .portfolio-warp:hover .portfolio-overlay {
-    opacity: 1;
-}
-
-.portfolio .portfolio-overlay p {
-    margin: 0;
-    color: #ffffff;
 }
 
 .portfolio .portfolio-text {
     display: flex;
     align-items: center;
+    justify-content: center; /* Yazıyı yatayda tam ortalar */
     height: 60px;
     background: #030f27;
     overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    padding: 0 12px;
 }
 
 .portfolio .portfolio-text h3 {
     margin: 0;
-    padding: 0 15px 0 25px;
-    width: calc(100% - 60px);
-    font-size: 20px;
+    padding: 0;
+    width: 100%; /* + butonu kalktığı için tam genişlik kullanır */
+    font-size: 18px;
     font-weight: 700;
     color: #fdbe33;
-    text-align: center;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    text-align: center; /* Firma ismini tam ortalar */
+    white-space: normal;
+    line-height: 1.25;
 }
 
-.portfolio .portfolio-warp a.btn {
-    width: 60px;
-    height: 60px;
-    padding: 3px 0 0 3px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 60px;
-    line-height: 60px;
-    font-weight: 100;
-    color: #030f27;
-    background: #ffffff;
-    border-radius: 0;
-    transition: .3s;
-}
+/* Mobil Görünüm (Yan yana 2'li Referans Kartları) */
+@media (max-width: 767.98px) {
+    .portfolio .portfolio-container {
+        margin-left: -6px;
+        margin-right: -6px;
+    }
 
-.portfolio .portfolio-warp:hover a.btn {
-    color: #ffffff;
-    background: #fdbe33;
+    .portfolio .portfolio-item {
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding-left: 6px;
+        padding-right: 6px;
+        margin-bottom: 12px;
+    }
+
+    .portfolio .portfolio-img img {
+        height: 140px;
+    }
+
+    .portfolio .portfolio-text {
+        height: 46px;
+        padding: 0 6px;
+    }
+
+    .portfolio .portfolio-text h3 {
+        font-size: 13px;
+        line-height: 1.2;
+    }
 }
 
 
