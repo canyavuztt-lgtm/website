@@ -1940,35 +1940,41 @@ a:focus {
 .portfolio .portfolio-text {
     display: flex;
     align-items: center;
-    justify-content: center; /* Yazıyı yatayda tam ortalar */
+    justify-content: center !important;
     height: 60px;
     background: #030f27;
     overflow: hidden;
-    padding: 0 12px;
+    padding: 0 12px !important;
+    white-space: normal !important;
 }
 
 .portfolio .portfolio-text h3 {
-    margin: 0;
-    padding: 0;
-    width: 100%; /* + butonu kalktığı için tam genişlik kullanır */
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
     font-size: 18px;
     font-weight: 700;
     color: #fdbe33;
-    text-align: center; /* Firma ismini tam ortalar */
-    white-space: normal;
+    text-align: center !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
     line-height: 1.25;
 }
 
 /* Mobil Görünüm (Yan yana 2'li Referans Kartları) */
 @media (max-width: 767.98px) {
-    .portfolio .portfolio-container {
+    .portfolio .row {
         margin-left: -6px;
         margin-right: -6px;
     }
 
     .portfolio .portfolio-item {
-        flex: 0 0 50%;
-        max-width: 50%;
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
         padding-left: 6px;
         padding-right: 6px;
         margin-bottom: 12px;
@@ -1979,12 +1985,12 @@ a:focus {
     }
 
     .portfolio .portfolio-text {
-        height: 46px;
-        padding: 0 6px;
+        height: 48px;
+        padding: 0 6px !important;
     }
 
     .portfolio .portfolio-text h3 {
-        font-size: 13px;
+        font-size: 13px !important;
         line-height: 1.2;
     }
 }
