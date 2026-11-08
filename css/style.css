@@ -83,10 +83,11 @@ a:focus {
     height: auto;
     min-height: 90px;
     background: #fdbe33;
+    padding: 10px 0;
 }
 
 .top-bar .logo {
-    padding: 0;
+    padding: 15px 0;
     text-align: left;
     overflow: hidden;
 }
@@ -101,33 +102,18 @@ a:focus {
 
 .top-bar .logo img {
     max-width: 100%;
-    max-height: 150px;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-}
-
-/* 3 iletişim kutusunun arasındaki mesafeyi birebir eşitler */
-.top-bar .col-lg-8 .row {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.top-bar .col-lg-8 .col-4 {
-    flex: 0 0 auto;
-    width: auto;
-    max-width: none;
+    max-height: 110px;
 }
 
 .top-bar .top-bar-item {
     display: flex;
     align-items: center;
-    justify-content: center; /* flex-end yerine center yapıldı */
+    justify-content: flex-start;
 }
 
 .top-bar .top-bar-icon {
     width: 40px;
+    min-width: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -147,7 +133,7 @@ a:focus {
     margin: 0 0 5px 0;
     color: #030f27;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 .top-bar .top-bar-text p {
@@ -155,12 +141,7 @@ a:focus {
     color: #030f27;
     font-size: 13px;
     font-weight: 400;
-}
-
-@media (max-width: 991.98px) {
-    .top-bar .logo {
-        text-align: center;
-    }
+    line-height: 1.4;
 }
 
 @media (min-width: 992px) {
@@ -169,12 +150,40 @@ a:focus {
     }
 }
 
+/* Küçük laptop ve geniş tablet ekranlarda (992px - 1399px) kaymayı önler */
+@media (min-width: 992px) and (max-width: 1399.98px) {
+    .top-bar {
+        padding: 0 25px;
+    }
+
+    .top-bar .top-bar-icon {
+        width: 32px;
+        min-width: 32px;
+    }
+
+    .top-bar .top-bar-icon [class^="flaticon-"]::before {
+        font-size: 30px;
+    }
+
+    .top-bar .top-bar-text {
+        padding-left: 10px;
+    }
+
+    .top-bar .top-bar-text h3 {
+        font-size: 14px;
+    }
+
+    .top-bar .top-bar-text p {
+        font-size: 11.5px;
+        white-space: nowrap;
+    }
+}
+
 @media (max-width: 991.98px) {
     .top-bar .logo {
         text-align: center;
     }
 }
-
 
 /**********************************/
 /*********** Nav Bar CSS **********/
@@ -193,7 +202,7 @@ a:focus {
     position: fixed;
     top: 0;
     width: 100%;
-    max-width: 100%; /* Sayfa aşağı kaydırıldığında menünün tam ekran kalmasını sağlar */
+    max-width: 100%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
     z-index: 999;
 }
@@ -218,10 +227,36 @@ a:focus {
 }
 
 .nav-bar .dropdown-menu {
-    margin-top: 0;
+    margin-top: 0 !important;
+    top: calc(100% - 2px); /* Boşluğu kapatarak yanıp sönmeyi engeller */
     border: 0;
-    border-radius: 0;
-    background: #f8f9fa;
+    border-top: 3px solid #fdbe33;
+    border-radius: 0 0 4px 4px;
+    background-color: #030f27 !important;
+    padding: 8px 0;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.nav-bar .dropdown-menu .dropdown-item {
+    color: #ffffff !important;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 10px 22px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    transition: background-color 0.2s ease, color 0.2s ease, padding-left 0.2s ease;
+}
+
+.nav-bar .dropdown-menu .dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.nav-bar .dropdown-menu .dropdown-item:hover,
+.nav-bar .dropdown-menu .dropdown-item:focus,
+.nav-bar .dropdown-menu .dropdown-item.active {
+    color: #030f27 !important;
+    background-color: #fdbe33 !important;
+    padding-left: 28px;
 }
 
 .nav-bar .btn {
@@ -258,6 +293,11 @@ a:focus {
         font-size: 15px;
         text-transform: uppercase;
     }
+
+    /* Masaüstünde menünün kesintisiz ve sabit açılmasını sağlar */
+    .nav-bar .nav-item.dropdown:hover .dropdown-menu {
+        display: block;
+    }
 }
 
 @media (max-width: 991.98px) {
@@ -277,7 +317,6 @@ a:focus {
         display: none;
     }
 }
-
 
 /*******************************/
 /******** Carousel CSS *********/
@@ -739,6 +778,12 @@ a:focus {
 /*******************************/
 /********* Service CSS *********/
 /*******************************/
+/**********************************/
+/********** Service CSS ***********/
+/**********************************/
+/**********************************/
+/********** Service CSS ***********/
+/**********************************/
 .service {
     position: relative;
     width: 100%;
@@ -759,6 +804,8 @@ a:focus {
 
 .service .service-img img {
     width: 100%;
+    height: 280px;
+    object-fit: cover;
 }
 
 .service .service-overlay {
@@ -791,21 +838,18 @@ a:focus {
     height: 60px;
     background: #030f27;
     overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
 }
 
 .service .service-text h3 {
     margin: 0;
-    padding: 0 15px 0 25px;
+    padding: 0 10px 0 15px;
     width: calc(100% - 60px);
-    font-size: 20px;
+    font-size: 16.5px; /* Uzun başlıkların tek satıra sığmasını sağlar */
+    line-height: 1.25;
     font-weight: 700;
     color: #fdbe33;
     text-align: left;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    white-space: normal; /* Kesilmek yerine gerekirse 2 satıra iner */
 }
 
 .service .service-item a.btn {
@@ -826,6 +870,65 @@ a:focus {
 
 .service .service-item:hover a.btn {
     color: #ffffff;
+}
+
+/* Mobil Görünüm (Yan yana 2'li kart düzeni) */
+@media (max-width: 767.98px) {
+    .service .row {
+        margin-left: -6px;
+        margin-right: -6px;
+    }
+
+    .service .row > [class*="col-"] {
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+
+    .service .service-item {
+        margin-bottom: 12px;
+    }
+
+    .service .service-img img {
+        height: 150px;
+    }
+
+    .service .service-overlay {
+        padding: 10px;
+    }
+
+    .service .service-overlay p {
+        font-size: 11px;
+        line-height: 1.3;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .service .service-text {
+        height: 44px;
+    }
+
+    .service .service-text h3 {
+        padding: 0 6px 0 10px;
+        width: calc(100% - 38px);
+        font-size: 12px;
+        line-height: 1.25;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .service .service-item a.btn {
+        width: 38px;
+        height: 44px;
+        font-size: 28px;
+        line-height: 44px;
+        padding: 0;
+    }
 }
 
 
@@ -2250,6 +2353,21 @@ a:focus {
 
 .footer .copyright p a:hover {
     color: #ffffff;
+}
+
+/* Footer Adres Sütunu Hizalama Düzeltmesi */
+.footer .footer-contact p {
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.6;
+    word-break: break-word; /* Uzun e-posta adresinin yan sütuna taşmasını engeller */
+}
+
+.footer .footer-contact p i {
+    width: 25px;
+    min-width: 25px; /* İkon genişliğini sabitler, metnin sola kaymasını önler */
+    margin-right: 5px;
+    margin-top: 4px; /* İkonu ilk satırla ortalar */
 }
 
 @media (max-width: 768px) {
